@@ -7,6 +7,7 @@ export default {
   title: 'Text',
   args: {
     $title: true,
+    children: 'Text',
   },
 } as Meta
 
