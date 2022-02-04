@@ -3,15 +3,15 @@ import TableCell from '@mui/material/TableCell'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 
+import { Ipatient } from 'types/Ipatient'
 import Text from '../Text'
 import DeleteButton from '../DeleteButton'
-import { Ipatient } from 'types/patient'
 
 import { Container, CustomTableRow, ShortTableCell } from './styles'
 
 export interface PatientsTableProps {
   patients: Array<Ipatient>
-  selectedPatient: Ipatient | undefined
+  selectedPatient: Ipatient
   setSelectedPatient(arg0: Ipatient): void
   setOpenModal(arg0: boolean): void
 }
@@ -36,13 +36,14 @@ export default function PatientsTable({
       <TableHead>
         <TableRow>
           {patients[0] &&
-            Object.keys(patients[0]).map((key, index) => (
-              <TableCell key={index}>
-                <Text $title>{key}</Text>
-              </TableCell>
-            ))}
-
-          <ShortTableCell />
+            Object.keys(patients[0]).map(
+              (key, index) =>
+                index < 3 && (
+                  <TableCell key={index}>
+                    <Text $title>{key}</Text>
+                  </TableCell>
+                ),
+            )}
           <ShortTableCell />
         </TableRow>
       </TableHead>
@@ -54,15 +55,18 @@ export default function PatientsTable({
             key={patient.id}
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
           >
-            {Object.keys(patient).map((key) => (
-              <TableCell
-                key={key + patient.id}
-                onClick={() => showEditPatientModal(patient)}
-                scope="patient"
-              >
-                <Text>{key}</Text>
-              </TableCell>
-            ))}
+            {Object.keys(patient).map(
+              (key, index) =>
+                index < 3 && (
+                  <TableCell
+                    key={key + patient.id}
+                    onClick={() => showEditPatientModal(patient)}
+                    scope="patient"
+                  >
+                    <Text>{key}</Text>
+                  </TableCell>
+                ),
+            )}
 
             <ShortTableCell align="right">
               <DeleteButton onDelete={() => onDelete(patient)} />
