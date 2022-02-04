@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded'
 
-import { CustomIconButton, ConfirmationButton } from './styles'
+import { Container, CustomIconButton, ConfirmationButton } from './styles'
 
 export interface DeleteButtonProps {
   onDelete(): void
@@ -15,14 +15,16 @@ export default function DeleteButton({ onDelete }: DeleteButtonProps) {
   }, [deleteAlowed])
 
   return (
-    <CustomIconButton
-      disableRipple={deleteAlowed}
-      onClick={() => !deleteAlowed && setDeleteAlowed(true)}
-    >
-      <DeleteRoundedIcon />
+    <Container>
+      <CustomIconButton
+        disableRipple={deleteAlowed}
+        onClick={() => !deleteAlowed && setDeleteAlowed(true)}
+      >
+        <DeleteRoundedIcon />
+      </CustomIconButton>
       {deleteAlowed && (
         <ConfirmationButton onClick={onDelete}>EXCLUIR</ConfirmationButton>
       )}
-    </CustomIconButton>
+    </Container>
   )
 }
