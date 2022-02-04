@@ -5,17 +5,14 @@ import TableRow from '@mui/material/TableRow'
 
 import Text from '../Text'
 import DeleteButton from '../DeleteButton'
+import { Ipatient } from 'types/patient'
 
 import { Container, CustomTableRow, ShortTableCell } from './styles'
 
-interface patient {
-  id: number
-}
-
 export interface PatientsTableProps {
-  patients: Array<patient>
-  selectedPatient: patient
-  setSelectedPatient(arg0: patient): void
+  patients: Array<Ipatient>
+  selectedPatient: Ipatient | undefined
+  setSelectedPatient(arg0: Ipatient): void
   setOpenModal(arg0: boolean): void
 }
 
@@ -25,12 +22,12 @@ export default function PatientsTable({
   setSelectedPatient,
   setOpenModal,
 }: PatientsTableProps) {
-  const showEditPatientModal = (patient: patient) => {
+  const showEditPatientModal = (patient: Ipatient) => {
     setSelectedPatient(patient)
     setOpenModal(true)
   }
 
-  const onDelete = (patient: patient) => {
+  const onDelete = (patient: Ipatient) => {
     alert('delete user' + patient.id)
   }
 
