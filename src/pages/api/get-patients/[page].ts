@@ -13,7 +13,7 @@ export default async function getPatients(
 
   let apiUrl = `https://randomuser.me/api/?seed=${seed}&page=${page}&results=${pageSize}&exc=login,registered,cell`
 
-  // Filter not working as specified on api docs, probably an api problem
+  // Filter not working properly as specified on api docs, probably an api problem or outdated docs
   if (nationality) apiUrl = apiUrl + `&nat=${nationality}`
   if (name) apiUrl = apiUrl + `&nat=${name}`
   if (gender !== 'any') apiUrl = apiUrl + `&gender=${gender}`
