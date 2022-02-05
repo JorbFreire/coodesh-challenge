@@ -32,7 +32,14 @@ export const Line = styled.div`
   gap: 64px;
 `
 
-export const ContentColumn = styled.section``
+export const ContentColumn = styled.section`
+  *:nth-child(2n + 1) {
+    margin-top: 8px;
+  }
+  *:first-of-type {
+    margin-top: 0;
+  }
+`
 
 export const PatientName = styled.h2`
   font-size: 2.4rem;
