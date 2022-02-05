@@ -33,7 +33,7 @@ export const Filters = styled.section`
 `
 
 export const Search = styled(TextField)`
-  width: calc(60% - 300px);
+  width: calc(55% - 300px);
   margin-bottom: 16px !important;
   input,
   label {
