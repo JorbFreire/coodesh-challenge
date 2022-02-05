@@ -55,7 +55,6 @@ export default function Home() {
   }, [page, searchDebounce, nationalityDebounce, genderDebounce])
 
   useEffect(() => {
-    console.log('render once')
     memorizedGetPatientes()
   }, [memorizedGetPatientes])
 
