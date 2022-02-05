@@ -5,6 +5,7 @@ import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import CircularProgress from '@mui/material/CircularProgress'
 
+import PatientsModal from 'components/PatientsModal'
 import PatientsTableProps from 'components/PatientsTableProps'
 import { Ipatient } from 'types/Ipatient'
 import {
@@ -30,7 +31,7 @@ export default function Home() {
   const [gender, setGender] = useState<Tgender>('any')
   const [genderDebounce] = useDebounce(gender, 2000)
 
-  const [openEditPatientModal, setOpenEditPatientModal] = useState(false)
+  const [openPatientModal, setOpenPatientModal] = useState(false)
   const [loading, setLoading] = useState(false)
 
   const memorizedGetPatientes = useCallback(async () => {
@@ -108,7 +109,7 @@ export default function Home() {
           patients={patients}
           selectedPatient={selectedPatient}
           setSelectedPatient={setSelectedPatient}
-          setOpenModal={setOpenEditPatientModal}
+          setOpenModal={setOpenPatientModal}
         />
         <LoadingMore onClick={() => setPage((oldValue) => oldValue + 1)}>
           {loading && <CircularProgress />}
@@ -116,10 +117,11 @@ export default function Home() {
         </LoadingMore>
       </Main>
 
-      {/* <EditPatientModal
-        open={openEditPatientModal}
-        setOpen={setOpenEditPatientModal}
-      /> */}
+      <PatientsModal
+        open={openPatientModal}
+        setOpen={setOpenPatientModal}
+        selectedPatient={selectedPatient}
+      />
     </Container>
   )
 }

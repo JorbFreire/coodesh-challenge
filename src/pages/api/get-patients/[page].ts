@@ -30,7 +30,7 @@ export default async function getPatients(
       email: patient.email,
       phone: patient.phone,
       nationality: patient.nat,
-      address: `${patient.location.street.name} ${patient.location.street.number} - ${patient.location.city}/${patient.location.state} ${patient.location.postcode} - ${patient.location.country}`,
+      address: `${patient.location.street.name} ${patient.location.street.number} - ${patient.location.city}/${patient.location.state} \n ${patient.location.postcode} - ${patient.location.country}`,
       id: patient.id.value,
     })
   })

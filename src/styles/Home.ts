@@ -13,7 +13,10 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px 512px;
+  padding: 16px 256px;
+  @media (max-width: 1440px) {
+    padding: 16px 64px;
+  }
 `
 
 export const Filters = styled.section`
@@ -21,14 +24,20 @@ export const Filters = styled.section`
   width: 100%;
   padding: 0 32px;
   gap: 32px;
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+  }
+  @media (max-width: 820px) {
+    margin-bottom: 16px;
+  }
 `
 
 export const Search = styled(TextField)`
-  width: 38%;
+  width: calc(60% - 300px);
   margin-bottom: 16px !important;
   input,
   label {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #c7c7c7;
   }
   input,
@@ -40,6 +49,13 @@ export const Search = styled(TextField)`
   }
   *:after {
     border-color: #fff !important;
+  }
+  @media (max-width: 1024px) {
+    width: calc(62% - 260px);
+  }
+  @media (max-width: 820px) {
+    width: 90%;
+    margin-bottom: 0 !important;
   }
 `
 
