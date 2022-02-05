@@ -7,13 +7,18 @@ export default async function getPatients(
   request: NextApiRequest,
   response: NextApiResponse,
 ) {
-  const { page } = request.query
+  const { page, nationality, name, gender } = request.query
   const pageSize = 50
   const seed = 'coodesh'
 
-  const { data } = await axios.get(
-    `https://randomuser.me/api/?seed=${seed}&page=${page}&results=${pageSize}&exc=login,registered,cell`,
-  )
+  let apiUrl = `https://randomuser.me/api/?seed=${seed}&page=${page}&results=${pageSize}&exc=login,registered,cell`
+
+  // Filter not working as specified on api docs, probably an api problem
+  if (nationality) apiUrl = apiUrl + `&nat=${nationality}`
+  if (name) apiUrl = apiUrl + `&nat=${name}`
+  if (gender !== 'any') apiUrl = apiUrl + `&gender=${gender}`
+
+  const { data } = await axios.get(apiUrl)
   const patients: Array<Ipatient> = []
 
   data.results.map((patient: Irandomuser) => {

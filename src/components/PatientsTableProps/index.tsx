@@ -63,7 +63,7 @@ export default function PatientsTable({
                     onClick={() => showEditPatientModal(patient)}
                     scope="patient"
                   >
-                    <Text>{key}</Text>
+                    <Text>{patient[key]}</Text>
                   </TableCell>
                 ),
             )}
